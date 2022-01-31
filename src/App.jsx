@@ -6,9 +6,14 @@ import NavBar from "./components/NavBar/NavBar";
 const App = () => {
   const [searchText, setSearchText] = useState("");
   const [beers, setBeers] = useState([]);
+  const [ABV, setABV] = useState(false);
+  const [brewed, setBrewed] = useState(false);
+
+  const beersHighABV = ABV ? "?abv_gt=10" : ""
+  const brewedBefore = brewed ? "?brewed_before=04-2008" : ""
 
   useEffect(() => {
-    fetch("https://api.punkapi.com/v2/beers?page=2&per_page=80")
+    fetch(`https://api.punkapi.com/v2/beers${beersHighABV}${brewedBefore}`)
     .then(response => {
       return response.json();
     })
@@ -16,16 +21,25 @@ const App = () => {
       console.log(data)
       setBeers(data);
     })
-  }, [])
+  }, [beersHighABV, brewedBefore])
 
   const matchingBeers = beers.filter((beer) => {
     const beerName = beer.name.toLowerCase();
     return beerName.includes(searchText.toLowerCase());
   });
 
+  const handleHighABVBeers = () => {
+    setABV(!ABV)
+  }
+
+  const handleBrewedBefore = () => {
+    setBrewed(!brewed)
+  }
+
   return (
     <section className={styles.app}>
-      <NavBar searchText={searchText} setSearchText={setSearchText} filteredBeers={matchingBeers}/>
+      <NavBar searchText={searchText} setSearchText={setSearchText} filteredBeers={matchingBeers} handleHighABVBeers={handleHighABVBeers} ABV={ABV}
+      handleBrewedBefore={handleBrewedBefore} />
       <BeerCard filteredBeers={matchingBeers}/>
     </section>
   );
