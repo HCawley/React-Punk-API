@@ -8,10 +8,14 @@ const NavBar = (props) => {
     return (
         <div className={styles.nav}>
         <SearchBar searchText={searchText} setSearchText={setSearchText} filterBeers={filterBeers}/>
-        <input type="checkbox" className="checkbox" id="highABV" onClick={handleHighABVBeers}/>
-        <label htmlFor="highABV">High ABV%</label>
-        <input type="checkbox" id="brewedBefore" onClick={handleBrewedBefore}/>
-        <label htmlFor="brewedBefore">Brewed before</label>
+        <div className={styles.checkboxes}>
+        <label htmlFor="highABV">
+        <input type="checkbox" className={styles.check} onClick={handleHighABVBeers}/>
+        High ABV%</label>
+        <label htmlFor="brewedBefore">
+        <input type="checkbox" className={styles.check} onClick={handleBrewedBefore}/>
+        Brewed before 2008</label>
+        </div>
         </div>
     )
 }

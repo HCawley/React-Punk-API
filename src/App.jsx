@@ -10,7 +10,7 @@ const App = () => {
   const [brewed, setBrewed] = useState(false);
 
   const beersHighABV = ABV ? "?abv_gt=10" : ""
-  const brewedBefore = brewed ? "?brewed_before=04-2008" : ""
+  const brewedBefore = brewed ? "?brewed_before=01-2008" : ""
 
   useEffect(() => {
     fetch(`https://api.punkapi.com/v2/beers${beersHighABV}${brewedBefore}`)

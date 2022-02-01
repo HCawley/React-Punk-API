@@ -6,8 +6,10 @@ const SearchBar = (props) => {
 
     return (
         <div className={styles.search}>
-        <label htmlFor="search">search</label>
-            <input id="search" type="text" value={searchText} onInput={(e) => setSearchText(e.target.value)}></input>
+        <h1 className={styles.navTitle}>Punk API</h1>
+        <div className={styles.searchBar}>
+            <input id="search" type="text" placeholder="Search..."value={searchText} onInput={(e) => setSearchText(e.target.value)}/>
+        </div>
         </div>
     )
 }
