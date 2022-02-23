@@ -9,7 +9,7 @@ const App = () => {
   const [ABV, setABV] = useState(false);
   const [brewed, setBrewed] = useState(false);
 
-  const beersHighABV = ABV ? "?abv_gt=10" : ""
+  const beersHighABV = ABV ? "?abv_gt=7" : ""
   const brewedBefore = brewed ? "?brewed_before=01-2008" : ""
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const App = () => {
   return (
     <section className={styles.app}>
       <NavBar searchText={searchText} setSearchText={setSearchText} filteredBeers={matchingBeers} handleHighABVBeers={handleHighABVBeers} ABV={ABV}
-      handleBrewedBefore={handleBrewedBefore} />
+      handleBrewedBefore={handleBrewedBefore} brewed={brewed}/>
       <BeerCard filteredBeers={matchingBeers}/>
     </section>
   );

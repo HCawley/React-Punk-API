@@ -11,7 +11,7 @@ const NavBar = (props) => {
         <div className={styles.checkboxes}>
         <label htmlFor="highABV">
         <input type="checkbox" className={styles.check} onClick={handleHighABVBeers}/>
-        High ABV%</label>
+        7+ ABV%</label>
         <label htmlFor="brewedBefore">
         <input type="checkbox" className={styles.check} onClick={handleBrewedBefore}/>
         Brewed before 2008</label>
